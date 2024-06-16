@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://cxrurtn61inft"]
+
+[ext_resource type="PackedScene" uid="uid://k3dqfk6a4wnp" path="res://Aatrox.tscn" id="1_0o1af"]
+[ext_resource type="Script" path="res://Fiora.gd" id="2_5q073"]
+[ext_resource type="PackedScene" uid="uid://beg1iy5dvbx35" path="res://Fiora.tscn" id="2_hdkck"]
+[ext_resource type="Script" path="res://CameraController.gd" id="3_e7u5a"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_durv6"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_7edub"]
+sky_material = SubResource("ProceduralSkyMaterial_durv6")
+
+[sub_resource type="Environment" id="Environment_aba1o"]
+background_mode = 2
+sky = SubResource("Sky_7edub")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_8m808"]
+vertices = PackedVector3Array(-29.5, 0.02, -29.5, -29.5, 0.02, 29.5, 29.5, 0.02, 29.5, 29.5, 0.02, -29.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
+cell_height = 0.01
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nquse"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f2yoj"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vewfw"]
+
+[node name="Main" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aba1o")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(6.44, 0, 0, 0, 6.44, 0, 0, 0, 6.44, 0, 0, 0)
+navigation_mesh = SubResource("NavigationMesh_8m808")
+
+[node name="Ground" type="StaticBody3D" parent="NavigationRegion3D" groups=["Ground"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground"]
+shape = SubResource("BoxShape3D_nquse")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Ground"]
+mesh = SubResource("BoxMesh_f2yoj")
+
+[node name="Fiora" parent="." instance=ExtResource("2_hdkck")]
+transform = Transform3D(7.2, 0, 0, 0, 7.2, 0, 0, 0, 7.2, 0, 0, 0)
+script = ExtResource("2_5q073")
+
+[node name="Aatrox" parent="." groups=["Enemy"] instance=ExtResource("1_0o1af")]
+transform = Transform3D(-7.2, 0, 6.29444e-07, 0, 7.2, 0, -6.29444e-07, 0, -7.2, 30, 0, 0)
+
+[node name="CameraController" type="Node3D" parent="."]
+script = ExtResource("3_e7u5a")
+
+[node name="Camera3D" type="Camera3D" parent="CameraController" groups=["Camera"]]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 80, 40)
+projection = 1
+size = 80.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(17.253, 0, 0, 0, 17.253, 0, 0, 0, 50, -25, 15, 0)
+mesh = SubResource("BoxMesh_vewfw")
