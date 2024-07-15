@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxrurtn61inft"]
+[gd_scene load_steps=13 format=3 uid="uid://cxrurtn61inft"]
 
-[ext_resource type="PackedScene" uid="uid://k3dqfk6a4wnp" path="res://Aatrox.tscn" id="1_0o1af"]
-[ext_resource type="Script" path="res://Fiora.gd" id="2_5q073"]
-[ext_resource type="PackedScene" uid="uid://beg1iy5dvbx35" path="res://Fiora.tscn" id="2_hdkck"]
-[ext_resource type="Script" path="res://CameraController.gd" id="3_e7u5a"]
+[ext_resource type="PackedScene" uid="uid://k3dqfk6a4wnp" path="res://prefabs/Aatrox.tscn" id="1_0o1af"]
+[ext_resource type="PackedScene" uid="uid://beg1iy5dvbx35" path="res://prefabs/Fiora.tscn" id="2_hdkck"]
+[ext_resource type="Script" path="res://scripts/InputController.gd" id="2_r716r"]
+[ext_resource type="Script" path="res://scripts/CameraController.gd" id="3_e7u5a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_durv6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -18,11 +18,14 @@ sky = SubResource("Sky_7edub")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_8m808"]
-vertices = PackedVector3Array(-29.5, 0.02, -29.5, -29.5, 0.02, 29.5, 29.5, 0.02, 29.5, 29.5, 0.02, -29.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
-geometry_parsed_geometry_type = 1
-cell_height = 0.01
+[sub_resource type="NavigationMesh" id="NavigationMesh_7c1mi"]
+vertices = PackedVector3Array(-2.3, 0.0574999, -9.1, -1.9, 0.0574999, -9.1, -1.9, 0.0574999, -29, -3, 0.0574999, -8.6, -2.3, 0.0574999, -9.1, -1.9, 0.0574999, -29, -3.2, 0.0574999, -8.2, -3, 0.0574999, -8.6, -1.9, 0.0574999, -29, -29, 0.0574999, -29, -29, 0.0574999, -7.4, -29, 0.0574999, -7.4, -3.2, 0.0574999, -7.4, -3.2, 0.0574999, -8.2, -1.9, 0.0574999, -29, -1.9, 0.0574999, -9.1, -1.5, 0.0574999, -9.1, -1.9, 0.0574999, -29, -1.5, 0.0574999, -9.1, -0.799999, 0.0574999, -8.6, -1.9, 0.0574999, -29, -0.799999, 0.0574999, -8.6, -0.6, 0.0574999, -8.2, 29, 0.0574999, -7.4, 29, 0.0574999, -29, -0.6, 0.0574999, -8.2, -0.6, 0.0574999, -7.4, 29, 0.0574999, -7.4, -29, 0.0574999, 7.4, -3.2, 0.0574999, 7.4, -3.2, 0.0574999, -7.4, -29, 0.0574999, -7.4, -0.6, 0.0574999, 7.4, 29, 0.0574999, 7.4, 29, 0.0574999, -7.4, -0.6, 0.0574999, -7.4, -1.9, 0.0574999, 29, -1.9, 0.0574999, 9.1, -2.3, 0.0574999, 9.1, -1.9, 0.0574999, 29, -2.3, 0.0574999, 9.1, -3, 0.0574999, 8.6, -1.9, 0.0574999, 29, -3, 0.0574999, 8.6, -3.2, 0.0574999, 8.2, -29, 0.0574999, 7.4, -29, 0.0574999, 29, -3.2, 0.0574999, 8.2, -3.2, 0.0574999, 7.4, -29, 0.0574999, 7.4, -1.5, 0.0574999, 9.1, -1.9, 0.0574999, 9.1, -1.9, 0.0574999, 29, -0.799999, 0.0574999, 8.6, -1.5, 0.0574999, 9.1, -1.9, 0.0574999, 29, -0.6, 0.0574999, 8.2, -0.799999, 0.0574999, 8.6, -1.9, 0.0574999, 29, 29, 0.0574999, 29, 29, 0.0574999, 7.4, 29, 0.0574999, 7.4, -0.6, 0.0574999, 7.4, -0.6, 0.0574999, 8.2)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 10), PackedInt32Array(13, 12, 11), PackedInt32Array(16, 15, 14), PackedInt32Array(19, 18, 17), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 24), PackedInt32Array(22, 24, 23), PackedInt32Array(27, 26, 25), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(35, 34, 32), PackedInt32Array(32, 34, 33), PackedInt32Array(38, 37, 36), PackedInt32Array(39, 41, 40), PackedInt32Array(43, 42, 44), PackedInt32Array(44, 42, 46), PackedInt32Array(44, 46, 45), PackedInt32Array(49, 48, 47), PackedInt32Array(52, 51, 50), PackedInt32Array(55, 54, 53), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 59), PackedInt32Array(59, 56, 60), PackedInt32Array(61, 63, 62)]
+cell_size = 0.1
+cell_height = 0.05
+agent_height = 3.0
+agent_radius = 1.0
+vertices_per_polygon = 8.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nquse"]
 size = Vector3(60, 2, 60)
@@ -30,7 +33,11 @@ size = Vector3(60, 2, 60)
 [sub_resource type="BoxMesh" id="BoxMesh_f2yoj"]
 size = Vector3(60, 2, 60)
 
-[sub_resource type="BoxMesh" id="BoxMesh_vewfw"]
+[sub_resource type="BoxMesh" id="BoxMesh_whlfm"]
+size = Vector3(0.495, 6.065, 16.03)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xkn4x"]
+size = Vector3(0.495, 6.065, 16.03)
 
 [node name="Main" type="Node"]
 
@@ -42,8 +49,7 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(6.44, 0, 0, 0, 6.44, 0, 0, 0, 6.44, 0, 0, 0)
-navigation_mesh = SubResource("NavigationMesh_8m808")
+navigation_mesh = SubResource("NavigationMesh_7c1mi")
 
 [node name="Ground" type="StaticBody3D" parent="NavigationRegion3D" groups=["Ground"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -54,21 +60,28 @@ shape = SubResource("BoxShape3D_nquse")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Ground"]
 mesh = SubResource("BoxMesh_f2yoj")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.897, 0.49, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+mesh = SubResource("BoxMesh_whlfm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_xkn4x")
+
 [node name="Fiora" parent="." instance=ExtResource("2_hdkck")]
-transform = Transform3D(7.2, 0, 0, 0, 7.2, 0, 0, 0, 7.2, 0, 0, 0)
-script = ExtResource("2_5q073")
+
+[node name="InputController" type="Node" parent="Fiora"]
+script = ExtResource("2_r716r")
 
 [node name="Aatrox" parent="." groups=["Enemy"] instance=ExtResource("1_0o1af")]
-transform = Transform3D(-7.2, 0, 6.29444e-07, 0, 7.2, 0, -6.29444e-07, 0, -7.2, 30, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
 [node name="CameraController" type="Node3D" parent="."]
 script = ExtResource("3_e7u5a")
 
 [node name="Camera3D" type="Camera3D" parent="CameraController" groups=["Camera"]]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 80, 40)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 17.885, 12.865)
 projection = 1
-size = 80.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(17.253, 0, 0, 0, 17.253, 0, 0, 0, 50, -25, 15, 0)
-mesh = SubResource("BoxMesh_vewfw")
+size = 17.524
+far = 120.85
