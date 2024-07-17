@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://k3dqfk6a4wnp" path="res://prefabs/Aatrox.tscn" id="1_0o1af"]
 [ext_resource type="PackedScene" uid="uid://beg1iy5dvbx35" path="res://prefabs/Fiora.tscn" id="2_hdkck"]
-[ext_resource type="Script" path="res://scripts/InputController.gd" id="2_r716r"]
-[ext_resource type="Script" path="res://scripts/CameraController.gd" id="3_e7u5a"]
+[ext_resource type="Script" path="res://scripts/PlayerOnly/InputController.gd" id="2_r716r"]
+[ext_resource type="Script" path="res://scripts/PlayerOnly/CameraController.gd" id="3_e7u5a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_durv6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -70,6 +70,7 @@ mesh = SubResource("BoxMesh_whlfm")
 shape = SubResource("BoxShape3D_xkn4x")
 
 [node name="Fiora" parent="." instance=ExtResource("2_hdkck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.661343, -0.0471897, 0.193655)
 
 [node name="InputController" type="Node" parent="Fiora"]
 script = ExtResource("2_r716r")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dn7noksxs56lp"]
 
-[ext_resource type="Script" path="res://scripts/CharacterBasic.gd" id="1_tbg6r"]
+[ext_resource type="Script" path="res://scripts/Common/CharacterBasic.gd" id="1_tbg6r"]
 [ext_resource type="PackedScene" uid="uid://cwyk2v6bd7req" path="res://assets/Fiora/skin49.glb" id="1_vkfh8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j6v4m"]

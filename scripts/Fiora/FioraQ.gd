@@ -11,16 +11,17 @@ var move_time = 0	#
 func _init():
 	cd = 1 * 1000 # in ms
 	
-func cast(source, dest):
+func cast(dest):
 	if !isReady():
-		return self.SKILL_NOT_READY
+		return self.Skill_Status.SKILL_NOT_READY
 	# no need to check target valid or not
-	prepare(source, dest)
-	return self.SKILL_CAST_SUCCESS
+	prepare(dest)
+	return self.Skill_Status.SKILL_CAST_SUCCESS
 
-func prepare(source, mouse_pos):
+func prepare(mouse_pos):
 	var dest = mouse_pos.position
-	caster = source
+	dest.y = 0
+	
 	dir = caster.position.direction_to(dest)
 	move_dist = min(caster.position.distance_to(dest), max_move_dist)
 	move_time = move_dist / move_speed
@@ -30,16 +31,17 @@ func prepare(source, mouse_pos):
 	caster.attacking = false
 	casting = true
 	caster.can_change_anim_state = false
-	caster.animator.cur_anim_state = caster.animator.CAST_Q
+	caster.animator.cur_anim_state = caster.animator.AnimationStatus.CAST_Q
 
 func finish():
 	# TODO deal damage at the end point
 	caster.can_move = true
 	casting = false
-	caster.animator.cur_anim_state = caster.animator.IDLE
+	caster.animator.cur_anim_state = caster.animator.AnimationStatus.IDLE
 	caster.can_change_anim_state = true
 	caster.can_change_move_state = true
 	next_avl_time = Time.get_ticks_msec() + cd
+	caster.resetNavAgent()
 
 func process(_delta):
 	if !casting:

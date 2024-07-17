@@ -2,7 +2,7 @@ extends Node
 
 var cur_anim_state = null
 
-enum {
+enum AnimationStatus {
 	IDLE,
 	WALK,
 	RUN,
@@ -13,7 +13,7 @@ enum {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	cur_anim_state = IDLE
+	cur_anim_state = AnimationStatus.IDLE
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
