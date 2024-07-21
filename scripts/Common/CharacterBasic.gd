@@ -5,6 +5,7 @@ class_name CharacterBasic
 @onready var nav_agent := $NavigationAgent3D
 @onready var animator := $AnimationTree
 @onready var animation_player := $AnimationPlayer
+@onready var health_bar := $HealthBar
 
 var base_stats = null
 var final_stats = CharacterStats.new()
@@ -43,11 +44,12 @@ var simple_timed_buffs = {}	# simply disapper when time ends, character does not
 var on_damaged_buffs = {}	# check this whenever get hit
 
 func _ready():
-	cur_health = final_stats.total_health
 	sub_ready()
 	
 	# after all the initalize steps, compute the final stats
 	computeFinalStats()
+	cur_health = final_stats.total_health
+	health_bar.updateBar()
 	
 func sub_ready():
 	pass
@@ -184,6 +186,7 @@ func takeDamage(damageObject:DamageCompute):
 		on_damaged_buffs[buff_id].multEffect(damageObject)
 	
 	cur_health = cur_health - damageObject.final_phy_damage - damageObject.final_mag_damage - damageObject.final_true_damage
+	health_bar.updateBar()
 	print(damageObject.final_phy_damage , "," , damageObject.final_mag_damage , "," , damageObject.final_true_damage , "," , damageObject.is_critic)
 	
 	# apply all the buffs resulted from this damage
@@ -204,6 +207,7 @@ func computeFinalStats():
 		stat_buffs[buff_id].addEffect(final_stats)
 	for buff_id in stat_buffs:
 		stat_buffs[buff_id].multEffect(final_stats)
+	health_bar.updateBar()
 		
 func resetNavAgent():
 	nav_agent.target_position = nav_agent.target_position

@@ -14,7 +14,8 @@ var pos_z = [-1, 1, -1, 1, 2, -2, 1, -2, 1, -1, 1, -2]
 var start_index = 0
 
 func _init():
-	cd = 1 * 1000 # in ms
+	cd = 10 * 1000 # in ms
+	icon = preload("res://assets/Fiora/hud/fiora_r.dds")
 	
 func cast(res):
 	if !isReady():

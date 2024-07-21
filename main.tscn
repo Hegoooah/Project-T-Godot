@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxrurtn61inft"]
+[gd_scene load_steps=15 format=3 uid="uid://cxrurtn61inft"]
 
 [ext_resource type="PackedScene" uid="uid://k3dqfk6a4wnp" path="res://prefabs/Aatrox.tscn" id="1_0o1af"]
 [ext_resource type="PackedScene" uid="uid://beg1iy5dvbx35" path="res://prefabs/Fiora.tscn" id="2_hdkck"]
 [ext_resource type="Script" path="res://scripts/PlayerOnly/InputController.gd" id="2_r716r"]
 [ext_resource type="Script" path="res://scripts/PlayerOnly/CameraController.gd" id="3_e7u5a"]
+[ext_resource type="Script" path="res://scripts/Common/HUD/SkillBar.gd" id="5_l8qs4"]
+[ext_resource type="PackedScene" uid="uid://vlf54kk5sy4x" path="res://prefabs/SpellButton.tscn" id="5_ynrbw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_durv6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -86,3 +88,34 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 17.885,
 projection = 1
 size = 17.524
 far = 120.85
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SkillBar" type="HBoxContainer" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -111.0
+offset_top = -40.0
+offset_right = 111.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+script = ExtResource("5_l8qs4")
+
+[node name="SpellP" parent="UI/SkillBar" instance=ExtResource("5_ynrbw")]
+layout_mode = 2
+
+[node name="SpellQ" parent="UI/SkillBar" instance=ExtResource("5_ynrbw")]
+layout_mode = 2
+
+[node name="SpellW" parent="UI/SkillBar" instance=ExtResource("5_ynrbw")]
+layout_mode = 2
+
+[node name="SpellE" parent="UI/SkillBar" instance=ExtResource("5_ynrbw")]
+layout_mode = 2
+
+[node name="SpellR" parent="UI/SkillBar" instance=ExtResource("5_ynrbw")]
+layout_mode = 2

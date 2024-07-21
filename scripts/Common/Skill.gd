@@ -2,6 +2,8 @@ extends Object
 
 class_name BaseSkill
 
+var icon:Texture2D = null
+
 var cd = 10 * 1000 # cd in ms
 var next_avl_time = 0 # next avaliable time in ms
 var targets = null # space to store targets if necessary

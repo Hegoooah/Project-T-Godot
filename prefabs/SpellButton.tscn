@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://vlf54kk5sy4x"]
+
+[ext_resource type="Script" path="res://scripts/Common/HUD/SpellButton.gd" id="1_pkolh"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rlf7j"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_aoq4t"]
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(60, 60)
+offset_right = 66.0
+offset_bottom = 66.0
+script = ExtResource("1_pkolh")
+
+[node name="SpellIcon" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CDBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.01
+value = 75.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("CanvasTexture_rlf7j")
+tint_progress = Color(0, 0.00392157, 0.223529, 0.862745)
+
+[node name="HotKey" type="Label" parent="."]
+layout_mode = 1
+offset_right = 33.0
+offset_bottom = 33.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 23
+
+[node name="CD" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -33.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="CastingBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = SubResource("CanvasTexture_aoq4t")
+tint_progress = Color(0.226707, 0.226707, 0.226707, 0.65098)
