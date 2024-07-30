@@ -26,7 +26,7 @@ func getRemainTime():
 	return max(remain, 0)
 	
 func isReady():
-	return (Time.get_ticks_msec() > next_avl_time) and !casting and caster.can_cast
+	return (Time.get_ticks_msec() > next_avl_time) and !casting and caster.can_cast and caster.no_cast_counter == 0
 	
 func cast(_dest):
 	pass

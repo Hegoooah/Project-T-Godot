@@ -28,9 +28,13 @@ func init(duration, source, target):
 	start_time = Time.get_ticks_msec()
 	end_time = start_time + exist_time
 	buff_target = target
+	customInit()
+	
+func customInit():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func process(delta):
 	if is_expire:
 		return
 	var cur_time = Time.get_ticks_msec()
@@ -40,9 +44,9 @@ func _process(delta):
 		return
 	
 	# buff still in effect
-	per_tick_effect()
+	per_tick_effect(cur_time, delta)
 	
-func per_tick_effect():
+func per_tick_effect(_cur_time, _delta):
 	pass
 
 func apply():

@@ -7,6 +7,7 @@ class_name CharacterBasic
 @onready var animation_player := $AnimationPlayer
 @onready var health_bar := $HealthBar
 
+var hostile_group = 'Player'
 var base_stats = null
 var final_stats = CharacterStats.new()
 var need_recompute = false
@@ -43,6 +44,9 @@ var stat_buffs = {}		# recalculate character stats whenever a new buff is added 
 var simple_timed_buffs = {}	# simply disapper when time ends, character does not need to actively check these buffs
 var on_damaged_buffs = {}	# check this whenever get hit
 
+var no_move_counter = 0
+var no_cast_counter = 0
+
 func _ready():
 	sub_ready()
 	
@@ -55,6 +59,7 @@ func sub_ready():
 	pass
 
 func _process(delta):
+	driveAllBuffs(delta)
 	checkStats()
 	checkAttack()
 	checkSkill(delta)
@@ -74,30 +79,17 @@ func sub_physics_process(_delta):
 	pass
 	
 func checkSkill(delta):
-	checkP(delta)
-	checkQ(delta)
-	checkW(delta)
-	checkE(delta)
-	checkR(delta)
+	if skill_p != null:
+		skill_p.process(delta)
+	if skill_q != null:
+		skill_q.process(delta)
+	if skill_w != null:
+		skill_w.process(delta)
+	if skill_e != null:
+		skill_e.process(delta)
+	if skill_r != null:
+		skill_r.process(delta)
 	
-func checkP(_delta):
-	pass
-
-func checkQ(_delta):
-	if skill_q == null:
-		return
-	skill_q.process(_delta)
-	
-func checkW(_delta):
-	pass
-	
-func checkE(_delta):
-	pass
-	
-func checkR(_delta):
-	if skill_r == null:
-		return
-	skill_r.process(_delta)
 	
 func checkAttack():
 	if target_enemy != null && canAttack():
@@ -151,7 +143,7 @@ func isFaceEnemy():
 		return false
 	
 func moveToPoint(delta):
-	if !can_move:
+	if !can_move or no_move_counter > 0:
 		return
 	if nav_agent.is_navigation_finished():
 		# no need to move
@@ -211,3 +203,19 @@ func computeFinalStats():
 		
 func resetNavAgent():
 	nav_agent.target_position = nav_agent.target_position
+
+func driveAllBuffs(delta):
+	for buff_id in on_hit_buffs:
+		on_hit_buffs[buff_id].process(delta)
+	for buff_id in on_cast_hit_buffs:
+		on_cast_hit_buffs[buff_id].process(delta)
+	for buff_id in on_damaged_buffs:
+		on_damaged_buffs[buff_id].process(delta)
+	for buff_id in simple_timed_buffs:
+		simple_timed_buffs[buff_id].process(delta)
+	for buff_id in stat_buffs:
+		stat_buffs[buff_id].process(delta)	
+
+func interruptAllSpell():
+	pass
+		

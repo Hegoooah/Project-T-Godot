@@ -9,7 +9,7 @@ var dir = null
 var move_time = 0	# 
 
 func _init():
-	cd = 5 * 1000 # in ms
+	cd = 1 * 1000 # in ms
 	icon = preload("res://assets/Fiora/hud/fiora_q.dds")
 	
 func cast(dest):

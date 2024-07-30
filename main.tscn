@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxrurtn61inft"]
+[gd_scene load_steps=16 format=3 uid="uid://cxrurtn61inft"]
 
 [ext_resource type="PackedScene" uid="uid://k3dqfk6a4wnp" path="res://prefabs/Aatrox.tscn" id="1_0o1af"]
 [ext_resource type="PackedScene" uid="uid://beg1iy5dvbx35" path="res://prefabs/Fiora.tscn" id="2_hdkck"]
 [ext_resource type="Script" path="res://scripts/PlayerOnly/InputController.gd" id="2_r716r"]
 [ext_resource type="Script" path="res://scripts/PlayerOnly/CameraController.gd" id="3_e7u5a"]
+[ext_resource type="Script" path="res://scripts/Aatrox/AatroxController.gd" id="4_5tawu"]
 [ext_resource type="Script" path="res://scripts/Common/HUD/SkillBar.gd" id="5_l8qs4"]
 [ext_resource type="PackedScene" uid="uid://vlf54kk5sy4x" path="res://prefabs/SpellButton.tscn" id="5_ynrbw"]
 
@@ -74,20 +75,38 @@ shape = SubResource("BoxShape3D_xkn4x")
 [node name="Fiora" parent="." instance=ExtResource("2_hdkck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.661343, -0.0471897, 0.193655)
 
-[node name="InputController" type="Node" parent="Fiora"]
-script = ExtResource("2_r716r")
+[node name="Node" type="Node" parent="Fiora"]
+script = ExtResource("4_5tawu")
 
 [node name="Aatrox" parent="." groups=["Enemy"] instance=ExtResource("1_0o1af")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.625, 0, 0)
+total_health = 1000
+total_mana = 0
+health_regen = 1
+mana_regen = 1
+attack_damage = 100
+ability_power = 0
+armor = 0
+magic_resist = 0
+attack_speed = 0.5
+speed = 3
+critic_rate = 0
+critic_damage_rate = 1.5
+attack_range = 3
+armor_pen = 0
+magic_pen = 0
+
+[node name="InputController" type="Node" parent="Aatrox"]
+script = ExtResource("2_r716r")
 
 [node name="CameraController" type="Node3D" parent="."]
 script = ExtResource("3_e7u5a")
 
 [node name="Camera3D" type="Camera3D" parent="CameraController" groups=["Camera"]]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 17.885, 12.865)
+transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 17.885, 12.865)
 projection = 1
-size = 17.524
-far = 120.85
+size = 15.0
+far = 100.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 

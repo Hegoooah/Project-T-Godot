@@ -1,11 +1,14 @@
 extends Node
 
 @onready var camera = get_tree().get_nodes_in_group("Camera")[0]
-
 var player = null
 
 func _ready():
 	player = get_parent()
+
+func _process(delta):
+	if player.target_enemy != null:
+		player.nav_agent.target_position = player.target_enemy.position
 
 func _input(_event):
 	if Input.is_action_just_pressed("RightMouse"):
@@ -30,6 +33,14 @@ func _input(_event):
 	if Input.is_key_pressed(KEY_Q):
 		var result = getMousePos()
 		player.skill_q.cast(result)
+	
+	if Input.is_key_pressed(KEY_W):
+		var result = getMousePos()
+		player.skill_w.cast(result)
+	
+	if Input.is_key_pressed(KEY_E):
+		var result = getMousePos()
+		player.skill_e.cast(result)
 		
 	if Input.is_key_pressed(KEY_R):
 		var result = getMousePos()
@@ -45,3 +56,4 @@ func getMousePos():
 	ray_query.from = from
 	ray_query.to = to
 	return space.intersect_ray(ray_query)
+

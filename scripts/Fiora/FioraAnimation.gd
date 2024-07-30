@@ -1,6 +1,4 @@
-extends Node
-
-var cur_anim_state = null
+extends Animator
 
 enum AnimationStatus {
 	IDLE,
@@ -15,7 +13,3 @@ enum AnimationStatus {
 func _ready():
 	cur_anim_state = AnimationStatus.IDLE
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
